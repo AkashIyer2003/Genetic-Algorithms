@@ -58,19 +58,22 @@ for i in range(5):
 name = []
 
 def trace_back(matrix,i,j,gene1,gene2,name):
-    if(i < 1 and j < 1):
-        if(gene1[i-2] == gene2[j-2]):
-            name.append(gene1[i-2])
-            trace_back(matrix,i-1,j-1,gene1,gene2,name)
-        else:
-            name.append["_"]
-            if(matrix[i-1][j] == 4 + matrix[i][j]):
-                trace_back(matrix,i-1,j,gene1,gene2,name)
-            elif(matrix[i-1][j-1] == 4 + matrix[i][j]):
-                trace_back(matrix,i-1,j-1,gene1,gene2,name)
-            else:
-                trace_back(matrix,i,j-1,gene1,gene2,name)
-        
-name.append(gene1[3])
+    if(matrix[i-1][j-1] == (matrix[i][j] - 5)):
+        name.append(gene1[i-1])
+        trace_back(matrix,i-1,j-1,gene1,gene2,name)
+    elif(matrix[i-1][j-1] == (matrix[i][j] + 4)):
+        name.append("_")
+        name.append(gene1[i-1])
+        trace_back(matrix,i-1,j-1,gene1,gene2,name)
+    elif(matrix[i-1][j] == (matrix[i][j] + 4)):
+        name.append("_")
+        name.append(gene1[i-1])
+        trace_back(matrix,i-1,j,gene1,gene2,name)
+    elif(matrix[i][j-1] == (matrix[i][j] + 4)):
+        name.append("_")
+        name.append(gene2[j-1])
+        trace_back(matrix,i,j-1,gene1,gene2,name)
+    else:
+        return
 trace_back(matrix,4,4,gene1,gene2,name)
-print(name)
+print(name[::-1])
