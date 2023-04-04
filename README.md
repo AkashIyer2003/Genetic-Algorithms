@@ -17,4 +17,4 @@ While optimising the weights using the 4 algorithms, it was noted that pso algor
 3. Genetic Algorithm
 4. ACO Algorithm
 
-To keep it fair, all the algorithms were given the same epochs, population and I/Os.
+To keep it fair, all the algorithms were given the same I/Os and parameters.
